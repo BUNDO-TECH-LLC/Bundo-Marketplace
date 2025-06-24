@@ -1,10 +1,19 @@
+
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const connectDB = require('./config/db');
+connectDB();
+
+// Import and use routes
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
   res.send('Bundo API is running...');
