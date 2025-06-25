@@ -11,6 +11,10 @@ app.use(express.json());
 const connectDB = require('./config/db');
 connectDB();
 
+const artisanRoutes = require('./routes/artisanRoutes');
+app.use('/api/artisans', artisanRoutes);
+
+
 // Import and use routes
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/users', userRoutes);
