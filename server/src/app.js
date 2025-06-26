@@ -19,6 +19,14 @@ app.use('/api/artisans', artisanRoutes);
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/users', userRoutes);
 
+const bookingRoutes = require('./routes/bookingRoutes');
+app.use('/api/bookings', bookingRoutes);
+
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);
+
+
+
 app.get('/', (req, res) => {
   res.send('Bundo API is running...');
 });

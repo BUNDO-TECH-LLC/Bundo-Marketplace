@@ -56,9 +56,52 @@ const getOwnArtisanProfile = async (req, res) => {
   }
 };
 
+
+const updateOwnArtisanProfile = async (req, res) => {
+  try {
+    const artisan = await Artisan.findOne({ user: req.user.userId });
+
+    if (!artisan) {
+      return res.status(404).json({ message: 'Artisan profile not found' });
+    }
+
+    const { bio, location, portfolioImages, phone, serviceType } = req.body;
+
+    if (bio !== undefined) artisan.bio = bio;
+    if (location !== undefined) artisan.location = location;
+    if (portfolioImages !== undefined) artisan.portfolioImages = portfolioImages;
+    if (phone !== undefined) artisan.phone = phone;
+    if (serviceType !== undefined) artisan.serviceType = serviceType;
+
+    const updated = await artisan.save();
+    res.json({ message: 'Profile updated', artisan: updated });
+  } catch (err) {
+    console.error('Error updating profile:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+const getArtisanById = async (req, res) => {
+  try {
+    const artisan = await Artisan.findById(req.params.id).populate('user', 'name email');
+
+    if (!artisan || !artisan.verified) {
+      return res.status(404).json({ message: 'Artisan not found or not verified' });
+    }
+
+    res.json(artisan);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+
 module.exports = {
   registerArtisan,
   getAllVerifiedArtisans,
   approveArtisan,
-  getOwnArtisanProfile
+  getOwnArtisanProfile, 
+  updateOwnArtisanProfile, getArtisanById
 };
