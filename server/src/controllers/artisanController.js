@@ -56,7 +56,6 @@ const getOwnArtisanProfile = async (req, res) => {
   }
 };
 
-
 const updateOwnArtisanProfile = async (req, res) => {
   try {
     const artisan = await Artisan.findOne({ user: req.user.userId });
@@ -96,12 +95,22 @@ const getArtisanById = async (req, res) => {
   }
 };
 
+const getPendingArtisans = async (req, res) => {
+  try {
+    const artisans = await Artisan.find({ isVerified: false }).populate('user', 'name email');
+    res.json({ artisans });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+};
 
-
+// ✅ Proper export of ALL controllers
 module.exports = {
   registerArtisan,
   getAllVerifiedArtisans,
   approveArtisan,
-  getOwnArtisanProfile, 
-  updateOwnArtisanProfile, getArtisanById
+  getOwnArtisanProfile,
+  updateOwnArtisanProfile,
+  getArtisanById,
+  getPendingArtisans
 };

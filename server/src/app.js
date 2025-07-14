@@ -2,6 +2,10 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const userRoutes = require('./routes/userRoutes');
+const artisanRoutes = require('./routes/artisanRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
+const errorHandler = require('./middleware/errorHandler');
 
 
 const app = express();
@@ -11,18 +15,17 @@ app.use(express.json());
 const connectDB = require('./config/db');
 connectDB();
 
-const artisanRoutes = require('./routes/artisanRoutes');
-app.use('/api/artisans', artisanRoutes);
 
 
-// Import and use routes
-const userRoutes = require('./routes/userRoutes');
+
+// routes
+
 app.use('/api/users', userRoutes);
 
-const bookingRoutes = require('./routes/bookingRoutes');
 app.use('/api/bookings', bookingRoutes);
 
-const errorHandler = require('./middleware/errorHandler');
+app.use('/api/artisans', artisanRoutes);
+
 app.use(errorHandler);
 
 
