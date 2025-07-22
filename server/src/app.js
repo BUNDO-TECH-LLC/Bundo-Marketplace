@@ -17,9 +17,7 @@ connectDB();
 
 
 
-
 // routes
-
 app.use('/api/users', userRoutes);
 
 app.use('/api/bookings', bookingRoutes);
@@ -27,7 +25,6 @@ app.use('/api/bookings', bookingRoutes);
 app.use('/api/artisans', artisanRoutes);
 
 app.use(errorHandler);
-
 
 
 app.get('/', (req, res) => {

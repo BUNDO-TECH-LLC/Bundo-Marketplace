@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import VerifiedArtisansPage from './pages/VerifiedArtisansPage';
 import AdminDashboard from './pages/AdminDashboard';
 import ArtisanDashboard from './pages/ArtisanDashboard';
+import Error from './pages/Error';
 
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/error" element={<Error />} />
         <Route path="/artisans" element={<VerifiedArtisansPage />} />
 
         {/* Artisan dashboard (only for logged-in users) */}
