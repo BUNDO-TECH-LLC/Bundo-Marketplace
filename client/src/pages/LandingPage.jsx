@@ -3,11 +3,9 @@ import React, { useEffect } from "react";
 // Landing page sections
 //import Header from "@/components/landing/header";
 import Hero from "@/components/landing/hero";
-import Features from "@/components/landing/features";
+import BrowseCategories from "@/components/landing/browseCategories";
 import HowItWorks from "@/components/landing/HowItWorks";
-import Testimonials from "@/components/landing/testimonials";
-import Pricing from "@/components/landing/pricing";
-import CTA from "@/components/landing/cta";
+import Recommended from "@/components/landing/recommended";
 import Footer from "@/components/landing/footer";
 
 const LandingPage = () => {
@@ -47,33 +45,13 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
-     
       <Hero />
-      <Features />
+      <BrowseCategories />
       <HowItWorks />
-      <Testimonials />
-      <Pricing />
-      <CTA />
+      <Recommended />
       <Footer />
     </div>
   );
 };
 
 export default LandingPage;
-
-
-
-// import React from 'react'
-
-// const LandingPage = () => {
-//   return (
-//     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-//       <h1>Welcome to Bundo Marketplace</h1>
-//       <p>Empowering Women, Connecting Skills to Clients Nearby</p>
-//       <a href="/login"><button>Get Started</button></a>
-//     </div>
-//   )
-// }
-
-// export default LandingPage
-
