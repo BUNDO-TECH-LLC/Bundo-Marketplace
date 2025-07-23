@@ -16,6 +16,7 @@ const AdminRoute = ({ children }) => {
 
     return children;
   } catch (err) {
+    console.error("JWT decode error:", err);
     return <Navigate to="/login" replace />;
   }
 };
