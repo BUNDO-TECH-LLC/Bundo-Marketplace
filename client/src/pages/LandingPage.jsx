@@ -10,7 +10,7 @@ import Footer from "@/components/landing/footer";
 
 const LandingPage = () => {
   useEffect(() => {
-    document.title = "Bundo Marketplace - Empowering Women Artisans";
+    document.title = "Bundo Marketplace - Need a Service, We connect you with an artisan that delivers";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
